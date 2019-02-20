@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			 xmlns:custom="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
+			 x:Class="IG_Cognitive.View.ViewCam_Gallery"
+			 Title="IG Custom Cognitive">
+	<ScrollView>
+		<StackLayout Padding="5" HorizontalOptions="Center" VerticalOptions="Center">
+			<custom:CircleImage x:Name="circlephoto" Source="{Binding RoutePhoto}" Aspect="AspectFill">
+				<custom:CircleImage.WidthRequest>
+					<OnPlatform x:TypeArguments="x:Double">
+						<On Platform="Android, iOS">300</On>
+					</OnPlatform>
+				</custom:CircleImage.WidthRequest>
+				<custom:CircleImage.HeightRequest>
+					<OnPlatform x:TypeArguments="x:Double">
+						<On Platform="Android, iOS">300</On>
+					</OnPlatform>
+				</custom:CircleImage.HeightRequest>
+				<Image.GestureRecognizers>
+					<TapGestureRecognizer Command="{Binding DisplayActionSheetComand}"/>
+				</Image.GestureRecognizers>
+			</custom:CircleImage>
+			<Label Text="Toca la Imagen seleccionar una opcion" 
+				   FontSize="Medium" 
+				   HorizontalOptions="Center" 
+				   VerticalTextAlignment="Center"/>
+
+			<Button x:Name="SearchService"
+							BackgroundColor="#2196F3"
+							BorderRadius="10"
+							Command="{Binding SearchCustomVisionComand}"
+							FontSize="Medium"
+							Text="Buscar" 
+							TextColor="White"/>
+		</StackLayout>
+	</ScrollView>
+</ContentPage>
